@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container shadow" id="main">
+    <div class="image-container">
+        <img src="Metro Parking Home.png" alt="Metro Parking Home" class="logo1">
+        <img src="Car.png" alt="Metro Parking Logo" class="logo2">
+        <p class="description">PARK & GO</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('main2').style.display = 'block';
+            
+        }, 1000); 
+    });
+</script>
+
+<div class="container shadow" id="main2" style="display: none;">
+    <div id="time" class="text-center">
+        <div class="circle" style="--clr-sec:#2d0ab9;">
+            <div class="dots sec_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70" id="ss"></circle>
+                <circle cx="70" cy="70" r="70" id="mm"></circle>
+                <circle cx="70" cy="70" r="70" id="hh"></circle>
+            </svg>
+            <div id="time-display">
+                <span id="time-text">Calculating time:</span><br>
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span><br>
+            </div>
+        </div>
+    </div>
+    <img src="StopWatch.png" alt="StopWatch Image" class="custom-image">
+    <div class="parking-details">
+        <span style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">PARKING</span>
+        <span style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">ZONE 1</span>
+        <span style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">, №</span>
+        <span style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">32B</span>
+
+        <div class="row">
+            <div class="col-8 parking-rate" style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">First 2 hours</div>
+            <div class="col-4 parking-rate" style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">RM15.00</div>
+
+            <div class="col-8 parking-rate" style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">Every subsequent hour</div>
+            <div class="col-4 parking-rate" style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">RM5.00</div>
+        </div>
+
+        <div class="total-amount">
+            <div style="width: 131px; height: 50px; margin: 0 auto; background: radial-gradient(53.41% 53.41% at 96.85% 12.08%, white 0%, white 0%, #F9F9FF 100%); border-radius: 16px; border: 1px rgba(112, 119, 242, 0.76) solid; backdrop-filter: blur(20px);">
+                <div style="color: #3277D8; font-size: 18px; font-family: Montserrat; font-weight: 500; line-height: 50px;">RM15.00</div>
+            </div>
+        </div>
+        
+        <button onclick="openPopup()" class="btn btn-primary" style="width: 344px; height: 64px; background: radial-gradient(50.61% 50.61% at 85.13% 11.46%, #969BFF 0%, #656CEE 100%); border-radius: 8px; border: 1px white solid; color: white; font-size: 22px; font-family: Montserrat; font-weight: 600;">Pay</button>
+    </div>
+</div>
+
+<div class="container shadow" id="main3" style="display: none;">
+    <div id="time" class="text-center">
+        <div class="circle" style="--clr-sec:#2d0ab9;">
+            <div class="dots secondDot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70" id="secondCircle"></circle>
+                <circle cx="70" cy="70" r="70" id="minuteCircle"></circle>
+            </svg>
+            <div id="time-display">
+                <span id="time-text">Remaining timeout</span><br>
+                <span id="countdownMinutes">10</span>:<span id="countdownSeconds">00</span><br>
+            </div>
+        </div>
+    </div>
+    <img src="StopWatch.png" alt="StopWatch Image" class="custom-image">
+    <div class="parking-details"> 
+      <span style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">PARKING</span>
+      <span style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">ZONE 1</span>
+      <span style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400;">, №</span>
+      <span style="color: #203D65; font-size: 18px; font-family: Roboto; font-weight: 700;">32B</span>
+    
+        <div class="texts">
+            <div style="color: #8498B4; font-size: 18px; font-family: Roboto; font-weight: 400; word-wrap: break-word">Leave before the timeout; <br/>parking fees resume in 10 minutes</div>
+        </div>
+
+        <div class="btexts">
+        <button class="btn btn-primary" style="width: 344px; height: 64px; background: radial-gradient(50.61% 50.61% at 85.13% 11.46%, #969BFF 0%, #656CEE 100%); border-radius: 8px; border: 1px white solid; color: white; font-size: 22px; font-family: Montserrat; font-weight: 600;">Noted</button>
+        </div>
+    </div>
+</div>
+    
+<script>
+        let hours = document.getElementById('hours');
+        let minutes = document.getElementById('minutes');
+        let seconds = document.getElementById('seconds');
+
+        let hh = document.getElementById('hh');
+        let mm = document.getElementById('mm');
+        let ss = document.getElementById('ss');
+
+        let sec_dot = document.querySelector('.sec_dot');
+
+        // Start time of the stopwatch
+        let startTime = new Date().getTime();
+
+        let x = setInterval(function(){
+            // Current time
+            let now = new Date().getTime();
+
+            // Calculate the elapsed time
+            let distance = now - startTime;
+
+            // Calculate hours, minutes, and seconds
+            let h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the HTML elements with the calculated values
+            hours.innerHTML = String(h).padStart(2, '0');
+            minutes.innerHTML = String(m).padStart(2, '0');
+            seconds.innerHTML = String(s).padStart(2, '0');
+
+            // Update the stroke-dashoffset for the circles
+            hh.style.strokeDashoffset = 440 - (440 * h) / 24;
+            mm.style.strokeDashoffset = 440 - (440 * m) / 60;
+            ss.style.strokeDashoffset = 440 - (440 * s) / 60;
+
+            // Update the rotation for the dots
+            sec_dot.style.transform = `rotateZ(${s * 6}deg)`;
+
+        }, 1000);
+
+</script>
+
+    <div class="popup" id="popup">
+        <div style="width: 400px; height: 730px; left: 0px; top: -350px; position: absolute; background: rgba(217, 217, 217, 0.60)"></div>
+        <div style="width: 370px;  left: 33px; top: 65px; position: absolute">
+        <div style="width: 370px;  left: 0px; top: 0px; position: absolute">
+        <div style="width: 385px; height: 730px; left: -25px; top: -365px; position: absolute; background: rgb(255, 255, 255); border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;"></div>
+        <img style="width: 80px; height: 80px; left: 135px; top: -350px; position: absolute; box-shadow: 0px 7px 16px rgba(220, 9, 9, 0.1); background: #656CEE" src="Tick.png">
+        <div style="width: 331px; height: 436px; left: 8px; top: -310px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: inline-flex">
+            <div style="width: 331px; text-align: center; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 500; word-wrap: break-word">Metro Parking (M) Sdn Bhd<br/>213264-U<br/>Suite 10.2, Level 10 Wisma Chase Perdana<br/>Off Jln Semantan Damansara Heights<br/>50490 Kuala Lumpur</div>
+            <div style="width: 331px; height: 37px; position: relative">
+              <div style="width: 323.93px; left: 7.07px; top: 0px; position: absolute; text-align: center; color: #203D65; font-size: 16px; font-family: Roboto Condensed; font-weight: 500; word-wrap: break-word">- INVOICE -</div>
+              <div style="width: 323.93px; height: 0px; left: 0px; top: 37px; position: absolute; border: 1.20px #203D65 dotted"></div>
+            </div>
+            <div style="height: 17px; position: relative">
+              <div style="width: 126.38px; left: 204.62px; top: 0px; position: absolute; text-align: right; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 500; word-wrap: break-word">25/04/2024 19:45</div>
+              <div style="width: 34.91px; left: 0px; top: 1px; position: absolute; color: #8498B4; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.42px; word-wrap: break-word">Date</div>
+            </div>
+            <div style="width: 331px; height: 17px; position: relative">
+              <div style="width: 160.08px; left: 170.92px; top: 0px; position: absolute; text-align: right; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 500; word-wrap: break-word">Parking Zone 1, No 23B</div>
+              <div style="width: 50.55px; left: 0px; top: 1px; position: absolute; color: #8498B4; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.42px; word-wrap: break-word">Details</div>
+            </div>
+            <div style="width: 331px; height: 17px; position: relative">
+              <div style="width: 129.99px; left: 201.01px; top: 0px; position: absolute; text-align: right; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.70px; word-wrap: break-word">MP20241223401</div>
+              <div style="width: 81.85px; left: 0px; top: 1px; position: absolute; color: #8498B4; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.42px; word-wrap: break-word">Invoice No.</div>
+            </div>
+            <div style="width: 331px; height: 17px; position: relative">
+              <div style="width: 155.27px; left: 175.73px; top: 0px; position: absolute; text-align: right; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 500; word-wrap: break-word">Wisma Chase Perdana</div>
+              <div style="width: 63.79px; left: 0px; top: 1px; position: absolute; color: #8498B4; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.42px; word-wrap: break-word">Location</div>
+            </div>
+            <div style="width: 331px; height: 0px; border: 1.20px #203D65 dotted"></div>
+            <div style="height: 17px; position: relative">
+              <div style="width: 58.98px; left: 272.02px; top: 0px; position: absolute; text-align: right; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 400; word-wrap: break-word">RM15.00</div>
+              <div style="width: 104.72px; left: -8px; top: 1px; position: absolute; color: #8498B4; font-size: 14px; font-family: Roboto; font-weight: 500; letter-spacing: 0.42px; word-wrap: break-word">Total Payment</div>
+            </div>
+            <div style="height: 16px; position: relative">
+              <div style="width: 60.94px; left: 270.06px; top: 0px; position: absolute; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 600; word-wrap: break-word">RM15.00</div>
+              <div style="width: 37.04px; left: 0px; top: 0px; position: absolute; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 600; letter-spacing: 0.42px; word-wrap: break-word">Total</div>
+            </div>
+            <div style="width: 331px; height: 0px; border: 1.20px #203D65 dotted"></div>
+            <div style="width: 331px; height: 18px; text-align: center; color: #203D65; font-size: 14px; font-family: Roboto; font-weight: 400; word-wrap: break-word">Thank you!</div>
+          </div>
+        <button type="button" onclick="completePayment()" style="width: 344px; height: 64.21px; left: 0px; top: 200px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Montserrat; font-weight: 600; word-wrap: break-word">Complete</button>
+        <img src="Metro Parking.png" alt="Metro Parking Logo" style="width: 170px; height: auto; left: 80px; top: 180px; position: absolute; border-radius: 0%; box-shadow: 0px 7px 16px rgba(255, 255, 255, 0.971);">
+        <a href="" style="width: 344px; height: 64.21px; left: 0px; top: 260px; position: absolute; text-align: center; color: #8498B4; font-size: 16px; font-family: Montserrat; font-weight: 500; word-wrap: break-word; display: flex; align-items: center; justify-content: center; text-decoration: none">Download PDF Receipt</a>
+    </div>
+
+    <script>
+        
+        let popup = document.getElementById("popup");
+        let secDot = document.querySelector(".sec_dot");
+        let timeDisplay = document.getElementById("time-display");
+
+        function openPopup(){
+            popup.classList.add("open-popup");
+            secDot.classList.add("hidden-elements");
+            timeDisplay.classList.add("hidden-elements");
+        }
+
+        function completePayment(){
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('main').style.display = 'none';
+        document.getElementById('main2').style.display = 'none';
+        document.getElementById('main3').style.display = 'block';
+        
+        let countdownMinutes = document.getElementById('countdownMinutes');
+        let countdownSeconds = document.getElementById('countdownSeconds');
+        let minuteCircle = document.getElementById('minuteCircle');
+        let secondCircle = document.getElementById('secondCircle');
+        let secondDot = document.querySelector('.secondDot');
+        
+        let countdownTimeInMillis = 600000;
+        let countdownEndTime = new Date().getTime() + countdownTimeInMillis;
+        
+        let countdownInterval = setInterval(function(){
+            let currentTime = new Date().getTime();
+            let remainingTime = countdownEndTime - currentTime;
+            let minutesLeft = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            let secondsLeft = Math.floor((remainingTime % (1000 * 60)) / 1000);
+            
+            if (remainingTime < 0) {
+                clearInterval(countdownInterval);
+                countdownMinutes.innerHTML = "00";
+                countdownSeconds.innerHTML = "00";
+                minuteCircle.style.strokeDashoffset = 440;
+                secondCircle.style.strokeDashoffset = 440;
+                secondDot.style.transform = `rotateZ(0deg)`;
+            } else {
+                countdownMinutes.innerHTML = String(minutesLeft).padStart(2, '0');
+                countdownSeconds.innerHTML = String(secondsLeft).padStart(2, '0');
+                minuteCircle.style.strokeDashoffset = 440 - (440 * minutesLeft) / 60;
+                secondCircle.style.strokeDashoffset = 440 - (440 * secondsLeft) / 60;
+                secondDot.style.transform = `rotateZ(${secondsLeft * 6}deg)`;
+            }
+        }, 1000);
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
